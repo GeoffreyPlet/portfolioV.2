@@ -7,8 +7,9 @@
  <!-- #START [Form method = post ] -->
 
 
+
     <!-- #START filter-body -->
-    <div class="create-header-form create-header">
+    <div class="p-5">
 
                     <!-- #START form -->
                     {{ form_start(headerForm) }}
@@ -21,11 +22,6 @@
                                 </div>
                             </div>
                             <div class="row justify-content-end" >
-                                <div  class="text-right">
-                                    <span id="close-create-header">
-                                        x
-                                    </span>
-                                </div>
                                 <div class="w-100">
                                     {{ form_label(headerForm.title, 'Titre') }}
                                     {{ form_widget(headerForm.title) }}

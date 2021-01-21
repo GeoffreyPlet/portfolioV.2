@@ -41,7 +41,7 @@ class HomeController extends AbstractController
             $header = new Header();
             $form = $this->createForm(HeaderType::class, $header);
 
-            $form->handleRequest($request); //Link the formulaire with request
+           ($request); //Link the formulaire with request
 
             if( $form->isSubmitted() && $form->isValid())
             {

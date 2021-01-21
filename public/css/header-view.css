@@ -10,13 +10,24 @@
     background-size: cover;
     background-position: center;
     height: 50px;
+    cursor: pointer;
+}
+.header-view-item:hover{
+    transform: scale(1.1);
 }
 .scroll{
-    height: 400px;
+    max-height: 400px;
     overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 .header-view{
     display: none;
+}
+.item-content{
+    flex-direction: column;
+    justify-content: center;
 }
 #close-header-view{
     cursor: pointer;
