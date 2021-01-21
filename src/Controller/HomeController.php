@@ -41,40 +41,58 @@ class HomeController extends AbstractController
             $header = new Header();
             $form = $this->createForm(HeaderType::class, $header);
 
-           ($request); //Link the formulaire with request
-
+            $form->handleRequest($request); //Link the formulaire with request
+            
+            
             if( $form->isSubmitted() && $form->isValid())
             {
-                /* #START UPLOAD IMAGE */
-                /** @var UploadedFile $image */
-                $image = $form->get('image')->getData();
-                if($image)
-                {
-                    $fileName = uniqid().'.'.$image->guessExtension();
-                    $image->move($this->getParameter('upload_directory'), $fileName);
-                    $header->setImage($fileName);
-                } else
-                {
-                    $header->setImage('default.jpg');
+                
+               if(empty($_POST['action'])){
+                   $action = null;
+               }else{
+                   $action = explode("-", $_POST['action']);
+               }
+
+                if($action[0] === 'upload'){
+
+                    $header = $repository->find($action[1]);
+                    $form = $this->createForm(HeaderType::class, $header);
+                    $form->handleRequest($request);
+
+                    $this->getDoctrine()->getManager()->flush();
+                    return $this->redirectToRoute('home_create');
                 }
-                /* #END UPLOAD IMAGE */
-
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($header);
-                $entityManager->flush();
-
-                return $this->redirectToRoute('home_create');
+                else{
+                    /* #START UPLOAD IMAGE */
+                    /** @var UploadedFile $image */
+                    $image = $form->get('image')->getData();
+                    if($image)
+                    {
+                        $fileName = uniqid().'.'.$image->guessExtension();
+                        $image->move($this->getParameter('upload_directory'), $fileName);
+                        $header->setImage($fileName);
+                    } else
+                    {
+                        $header->setImage('default.jpg');
+                    }
+                    /* #END UPLOAD IMAGE */
+    
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($header);
+                    $entityManager->flush();
+    
+                    return $this->redirectToRoute('home_create');
+                }
             }
         /**
          * #END PHP SCRIPT FOR ADD A HEADER
          */
-
-
-
         
         return $this->render('home/create.html.twig', [
             'headerForm' => $form->createView(),
             'properties' => $properties,
         ]);
     }
+
+   
 }

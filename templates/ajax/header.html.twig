@@ -27,7 +27,10 @@
                                     {{ form_widget(headerForm.title) }}
                                     {{ form_widget(headerForm) }}
                                 </div>
-                                <button formnovalidate>Ajouter</button>
+                                <div>
+                                    <input value="upload-{{header.id}}" name="action" hidden>
+                                </div>
+                                <button formnovalidate>Modifier</button>
                             </div>
                         </div>
                     {{ form_end(headerForm) }}
@@ -35,3 +38,5 @@
 
         </div>
         <!-- #END filter-body -->
+
+       

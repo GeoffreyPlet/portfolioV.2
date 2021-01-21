@@ -7,7 +7,7 @@
         for(let i = 0; i<$('.create-header').length; i++ ){
             $('.create-header')[i].style.display = 'block';
         }
-        $('html').css({
+        $('body').css({
             'background': '#788080',
         });
     });
@@ -19,7 +19,7 @@
         for(let i = 0; i<$('.create-header').length; i++ ){
             $('.create-header')[i].style.display = 'none';
         }
-        $('html').css({
+        $('body').css({
             'background': 'none',
         });
     });
@@ -31,7 +31,7 @@
         for(let i = 0; i<$('.header-view').length; i++){
             $('.header-view')[i].style.display = 'block';
         }
-        $('html').css({
+        $('body').css({
             'background': '#788080',
         });
     });
@@ -50,7 +50,7 @@
             });
             $($('.header-view-item')[i]).removeClass('active-item');
         }
-        $('html').css({
+        $('body').css({
             'background': 'none',
         });
         $('#active-boby').html('');
@@ -122,6 +122,10 @@
     
 /* #END SCRIPT FOR CREATE HEADER */
 
+
+/**
+ * Ajax request
+ */
 $('.header-view-item').click(function(event) {
     let value = $($(event.currentTarget).children()[1]).val();
     //console.log(value);
@@ -130,7 +134,7 @@ $('.header-view-item').click(function(event) {
     $.ajax('/ajax/view/header/'+value, {
         type: 'GET'
     }).then(function(response) {
-        console.log(response.html);
         $('#active-boby').html(response.html);
     });
 });
+
