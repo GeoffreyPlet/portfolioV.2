@@ -46,12 +46,8 @@ class HomeController extends AbstractController
             
             if( $form->isSubmitted() && $form->isValid())
             {
-                
-               if(empty($_POST['action'])){
-                   $action = null;
-               }else{
-                   $action = explode("-", $_POST['action']);
-               }
+                $action = explode("-", $request->get('action'));
+               
 
                 if($action[0] === 'upload'){
 
