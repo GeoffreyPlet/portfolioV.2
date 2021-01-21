@@ -1,0 +1,31 @@
+.header-view-form{
+    position: absolute;
+    top: 10%;
+    width: 80%;
+    background: #fff;
+    left: 10%;
+}
+.header-view-item{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 50px;
+}
+.scroll{
+    height: 400px;
+    overflow-y: scroll;
+}
+.header-view{
+    display: none;
+}
+#close-header-view{
+    cursor: pointer;
+    padding: 0 1rem;
+    position: relative;
+    top: -1px;
+    color: #000;
+}
+#close-header-view:hover{
+    color: #fff;
+    background-color: rgb(223, 53, 53);
+}

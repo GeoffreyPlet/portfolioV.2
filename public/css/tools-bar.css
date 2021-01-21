@@ -1,0 +1,29 @@
+/* #START CSS FOR TOOLS BAR */
+.tools-bar{
+    position: fixed;
+    background-color: #353a40;
+    width: 100px;
+    height: 100vh;
+    top: 0;
+}
+.tools-row{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.tools-col{
+    text-align: center;
+    background: #353a40;
+    color: #fff;
+}
+.tools-title{
+    font-size: 0.7rem;
+    padding-right: 0.2rem;
+    float: right;
+    clear: both;
+}
+.tools-item{
+    padding: 1rem;
+    cursor: pointer;
+}
+/* #START CSS FOR TOOLS BAR */

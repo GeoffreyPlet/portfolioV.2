@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href=" {{ asset('css/tools-bar.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+    <!-- #START [background : back] -->
+    <div class="bg-admin">
+
+        <!-- #START [toolsBar] -->
+        <div class="tools-bar">
+                <div class="tools-row">
+                    <div class="tools-col">
+                       <span class="tools-title">
+                            create tools
+                       </span>
+                       <div class="tools-item" title="Add header" id="create-header-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+                                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
+                            </svg>
+                       </div>
+                    </div>
+                    <div class="tools-col mt-5">
+                       <span class="tools-title">
+                            View tools
+                       </span>
+                       <div class="tools-item" title="Add header view" id="view-header-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                                <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+                            </svg>
+                       </div>
+                    </div>
+                </div>
+        </div>
+        <!-- #END [toolsBar] -->
+
+        <!-- #START [View of site] -->
+        <div class="view">
+                    
+            
+        </div>
+        <!-- #END [View of site] -->
+
+    </div>
+    <!-- #END [background : back] -->
+
+    {% include 'home/modal/create-header.html.twig' %}
+    {% include 'home/view/header.html.twig' %}
+
+   
+
+
+{% endblock %}

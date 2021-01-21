@@ -1,0 +1,24 @@
+.bg-form{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    opacity: 0.5;
+    min-height: 100vh;
+    background: black;
+
+}
+.create-header-form{
+    background-color: #fff;
+    display: flex;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.create-header{
+    display: none;
+}

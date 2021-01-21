@@ -1,0 +1,44 @@
+ {% block stylesheets %}
+    <link rel="stylesheet" href=" {{ asset('css/create-header.css') }}">
+{% endblock %}
+ 
+ 
+ <!-- #START [Form method = post ] -->
+
+    <!-- #START filter -->
+    <div class="bg-form create-header">
+                
+
+    </div>
+    <!-- #END filter -->
+
+    <!-- #START filter-body -->
+    <div class="create-header-form create-header">
+
+                    <!-- #START form -->
+                    {{ form_start(headerForm) }}
+                    
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="">
+
+                                </div>
+                            </div>
+                            <div class="row justify-content-end" >
+                                <div class="col-2 p-0 text-right" id="close-create-header" style="cursor: pointer">
+                                    X
+                                </div>
+                                <div class="w-100">
+                                    {{ form_label(headerForm.title, 'Titre') }}
+                                    {{ form_widget(headerForm.title) }}
+                                    {{ form_widget(headerForm) }}
+                                </div>
+                                <button formnovalidate>Ajouter</button>
+                            </div>
+                        </div>
+                    {{ form_end(headerForm) }}
+                    <!-- #END form -->
+
+        </div>
+        <!-- #END filter-body -->
