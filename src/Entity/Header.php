@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HeaderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Header
      * @ORM\Column(type="boolean")
      */
     private $display;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Maquette::class, mappedBy="header")
+     */
+    private $maquettes;
+
+    public function __construct()
+    {
+        $this->maquettes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,36 @@ class Header
     public function setDisplay(bool $display): self
     {
         $this->display = $display;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Maquette[]
+     */
+    public function getMaquettes(): Collection
+    {
+        return $this->maquettes;
+    }
+
+    public function addMaquette(Maquette $maquette): self
+    {
+        if (!$this->maquettes->contains($maquette)) {
+            $this->maquettes[] = $maquette;
+            $maquette->setHeader($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaquette(Maquette $maquette): self
+    {
+        if ($this->maquettes->removeElement($maquette)) {
+            // set the owning side to null (unless already changed)
+            if ($maquette->getHeader() === $this) {
+                $maquette->setHeader(null);
+            }
+        }
 
         return $this;
     }

@@ -193,8 +193,16 @@ function loadHeaderViewEvent(){
              */
             $('.add-view-header').click(function(event){
                 let value = $(event.currentTarget).attr('id').split('-').pop();
+
                 
+                $.ajax('/ajax/add/view/header/'+value, {
+                    type: 'GET'
+                }).then(function(response){
+                    let html = response.html;
+                    $('#view').html(html);
+                });
                 
+
             });
         });
     });

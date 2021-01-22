@@ -1,9 +1,15 @@
-{% extends base.html.twig %}
-
-{% block stylesheets %}
-    {{ parent() }}
-{% endblock %}
 
 <div id="header">
-salut
+    <div style="background-image: url({{ asset('img/uploads/' ~ header.image) }});
+                position: relative;
+                height: 100vh;">
+                            <div class="d-flex flex-column justify-content-center" style="color: #fff; height: 100%">
+                                <h1 class="m-0 text-center text-uppercase">
+                                    {{header.title}}
+                                </h1>
+                                <p class="text-center">
+                                    {{header.description}}
+                                </p>
+                            </div>
+                    </div>
 <div>
