@@ -2,31 +2,34 @@
     <link rel="stylesheet" href="{{ asset('css/header-view.css') }}">
 {% endblock %}
 
-
-<div class="header-view-form header-view">
-    <div  class="text-right">
-    <span id="close-header-view">
-        x
-    </span>
-    </div>
-    <div class="scroll">
-        <div class="d-flex flex-column">
-            {% for property in properties %}
-                <div class="header-view-item" style="background-image: url({{ asset('img/uploads/' ~ property.image) }}); position: relative;">
-                        <div class="item-content" style="display: none; color: #fff; height: 100%">
-                            <h1 class="m-0 text-center text-uppercase">
-                                {{property.title}}
-                            </h1>
-                            <p class="text-center">
-                                {{property.description}}
-                            </p>
-                        </div>
-                        <input type="text" value="{{property.id}}" hidden>
-                </div>
-            {% endfor %}
+<div id="header-view">
+    <div class="header-view-form header-view">
+        <div  class="text-right">
+        <span id="close-header-view">
+            x
+        </span>
         </div>
-    </div>
-    <div id="active-boby">
-        
+        <div class="scroll">
+            <div class="d-flex flex-column">
+                {% for property in properties %}
+                    {% if property.display == true %}
+                    <div class="header-view-item" style="background-image: url({{ asset('img/uploads/' ~ property.image) }}); position: relative;">
+                            <div class="item-content" style="display: none; color: #fff; height: 100%">
+                                <h1 class="m-0 text-center text-uppercase">
+                                    {{property.title}}
+                                </h1>
+                                <p class="text-center">
+                                    {{property.description}}
+                                </p>
+                            </div>
+                            <input type="text" value="{{property.id}}" hidden>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div id="active-boby">
+            
+        </div>
     </div>
 </div>

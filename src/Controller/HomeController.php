@@ -46,19 +46,7 @@ class HomeController extends AbstractController
             
             if( $form->isSubmitted() && $form->isValid())
             {
-                $action = explode("-", $request->get('action'));
                
-
-                if($action[0] === 'upload'){
-
-                    $header = $repository->find($action[1]);
-                    $form = $this->createForm(HeaderType::class, $header);
-                    $form->handleRequest($request);
-
-                    $this->getDoctrine()->getManager()->flush();
-                    return $this->redirectToRoute('home_create');
-                }
-                else{
                     /* #START UPLOAD IMAGE */
                     /** @var UploadedFile $image */
                     $image = $form->get('image')->getData();
@@ -78,7 +66,7 @@ class HomeController extends AbstractController
                     $entityManager->flush();
     
                     return $this->redirectToRoute('home_create');
-                }
+                
             }
         /**
          * #END PHP SCRIPT FOR ADD A HEADER

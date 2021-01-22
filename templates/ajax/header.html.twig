@@ -2,6 +2,10 @@
  {% block stylesheets %}
     <link rel="stylesheet" href=" {{ asset('css/create-header.css') }}">
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/ajax/header.js') }}"></script>
+{% endblock %}
  
  
  <!-- #START [Form method = post ] -->
@@ -28,9 +32,9 @@
                                     {{ form_widget(headerForm) }}
                                 </div>
                                 <div>
-                                    <input value="upload-{{header.id}}" name="action" hidden>
+                                    <input value="{{header.id}}" name="header[id]" hidden>
                                 </div>
-                                <button formnovalidate>Modifier</button>
+                                <button class="update-header" formnovalidate>Modifier</button>
                             </div>
                         </div>
                     {{ form_end(headerForm) }}
@@ -38,5 +42,3 @@
 
         </div>
         <!-- #END filter-body -->
-
-       
