@@ -9,3 +9,15 @@
     color: #fff;
     background-color: rgb(223, 53, 53);
 }
+#create-maquette{
+    border: 1px solid #000;
+    cursor: pointer;
+}
+#create-maquette:hover{
+    border: 1px solid #008000;
+    background-color: #008000;
+    color: #fff;
+}
+.body .col-lg-3{
+    cursor: pointer;
+}

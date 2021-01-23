@@ -22,6 +22,11 @@ class Maquette
      */
     private $header;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $selecting;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class Maquette
     public function setHeader(?Header $header): self
     {
         $this->header = $header;
+
+        return $this;
+    }
+
+    public function getSelecting(): ?bool
+    {
+        return $this->selecting;
+    }
+
+    public function setSelecting(bool $selecting): self
+    {
+        $this->selecting = $selecting;
 
         return $this;
     }

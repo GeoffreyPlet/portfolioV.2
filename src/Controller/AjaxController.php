@@ -61,14 +61,16 @@ class AjaxController extends AbstractController
 
      #[Route('/ajax/add/view/header/{query}', name: 'ajax_add_view_header')]
      public function addViewHeader($query, HeaderRepository $repository, MaquetteRepository $repositoryMaquette){
+         
          $header = $repository->find($query);
-         $maquette = new Maquette();
+         $allMaquette = $repositoryMaquette->findAll();
 
-         $maquette->setHeader($header);
-
-         /* $entityManager = $this->getDoctrine()->getManager();
-         $entityManager->persist($maquette);
-         $entityManager->flush(); */
+         foreach($allMaquette as $maquette){
+             if($maquette->getSelecting() === true){
+                $maquette->setHeader($header);
+                $this->getDoctrine()->getManager()->flush();
+             }
+         }
 
          return $this->json([
              'html' => $this->renderView('component/header.html.twig', ['header' => $header]),

@@ -12,6 +12,7 @@ loadCreateMaquette();
  * 
  * @close-create-maquette Event for hidden create-maquette
  * @create-maquette Event for add a maquette ( ajax request )
+ * @selecting-maquette Event for select a maquette for start building view
  * 
  */
 function loadCreateMaquette(){
@@ -40,6 +41,25 @@ function loadCreateMaquette(){
             loadCreateMaquette();
         });
     });
+
+    /**
+     * @selecting-maquette
+     * [AJAX Request]
+     * type:POST
+     * change data of selecting 
+     */
+    $('.maquette').click(function(event){
+        let value = new Object;
+        value['id'] = $($(event.currentTarget).children()[0]).attr('id').split('-').pop();
+
+        $.ajax('/ajax/select/maquette', {
+            type: 'POST',
+            data: value,
+        }).then(function(response) {
+
+        });
+    });
+    
 }
 
 /**

@@ -11,18 +11,23 @@
             x
         </span>
     </div>
-    <div class="body">
+    <div class="body d-flex flex-wrap">
         {% for maquette in maquettes %}
-            <div class="text-danger text-uppercase">
-                tu dois faire le css des maquettes, ici est représenté une maquette dans un foreach
+            <div class="col-lg-3 mt-3 maquette">
+                <div id="maquette-{{maquette.id}}" class=" p-2 border shadow">
+                    <p class="m-0">Maquette - {{maquette.id}}</p>
+                    {% if maquette.header %}
+                        <p class="sous-titre">Header</p>
+                        {{maquette.header.title}}
+                    {% endif %}
+                </div>
             </div>
         {% endfor %}
     </div>
-    <div>
-        <span id="create-maquette">
+    <div class="m-3 text-center">
+        <span id="create-maquette" class="py-2 px-3">
             Ajouter une maquette
         </span>
     </div>
     
 </div>
-
