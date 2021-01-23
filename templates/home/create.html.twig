@@ -3,6 +3,9 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href=" {{ asset('css/tools-bar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create-maquette.css') }}">
+    <link rel="stylesheet" href=" {{ asset('css/create-header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/header-view.css') }}">
 {% endblock %}
 
 
@@ -24,6 +27,11 @@
                                 <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
                             </svg>
                        </div>
+                       <div class="tools-item" title="Add maquette" id="create-maquette-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                            </svg>
+                       </div>
                     </div>
                     <div class="tools-col mt-5">
                        <span class="tools-title">
@@ -42,6 +50,7 @@
         <!-- #START [View of site] -->
         <div id="view">
        
+       
         </div>
         <!-- #END [View of site] -->
 
@@ -50,6 +59,7 @@
 
     {% include 'home/modal/create-header.html.twig' %}
     {% include 'home/view/header.html.twig' %}
+    {% include 'ajax/create-maquette.html.twig' %}
 
    
 

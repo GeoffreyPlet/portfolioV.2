@@ -1,0 +1,28 @@
+{% block javascripts %}
+    <script src="{{ asset('js/ajax/create-maquette.js') }}"></script>
+{% endblock %}
+
+<div class="position-absolute w-50 create-maquette" style="top: 25%;
+                                                left: 25%;
+                                                background-color: #fff;
+                                                display: {{display ? display : 'none'}};">
+    <div class="text-right">
+        <span id="close-create-maquette">
+            x
+        </span>
+    </div>
+    <div class="body">
+        {% for maquette in maquettes %}
+            <div class="text-danger text-uppercase">
+                tu dois faire le css des maquettes, ici est représenté une maquette dans un foreach
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        <span id="create-maquette">
+            Ajouter une maquette
+        </span>
+    </div>
+    
+</div>
+

@@ -2,12 +2,52 @@
 
 /************************************************ */
 loadToolsEvent();
+loadHeaderCreateEvent();
+loadHeaderViewEvent();
+loadCreateMaquette();
+/********************************************* */
+
+/***
+ * #loadCreateMaquette Function for load event for create maquette
+ * 
+ * @close-create-maquette Event for hidden create-maquette
+ * @create-maquette Event for add a maquette ( ajax request )
+ * 
+ */
+function loadCreateMaquette(){
+    /**
+     *  @close-create-maquette
+     */
+    $('#close-create-maquette').click(function(){
+        for(let i = 0; i<$('.create-maquette').length; i++ ){
+            $('.create-maquette')[i].style.display = 'none';
+        }
+        $('body').css({
+            'background': 'none',
+        });
+    });
+
+    /**
+     * @create-maquette
+     * [AJAX Request]
+     */
+    $('#create-maquette').click(function(){
+        $.ajax('/ajax/add/maquette', {
+            type: 'POST',
+        }).then(function(response) {
+            $('.create-maquette')[0].remove();
+            $('body').append(response.html);
+            loadCreateMaquette();
+        });
+    });
+}
 
 /**
  * #loadToolsEvent Function for load all event for tools
  * 
  * @show-create-header Event for show create tools
  * @show-view-header Event for show view tools
+ * @show-create-maquette
  */
 function loadToolsEvent(){
         /**
@@ -35,10 +75,22 @@ function loadToolsEvent(){
                 'background': '#788080',
             });
         });
+
+        /**
+         *  @show-create-maquette
+         */
+        $('#create-maquette-btn').click(function(){
+            for(let i = 0; i<$('.create-maquette').length; i++){
+                $('.create-maquette')[i].style.display = 'block';
+            }
+            $('body').css({
+                'background': '#788080',
+            });
+        })
 }
 
 /******************************************************************************** */
-loadHeaderCreateEvent();
+
 /**
  * #loadHeaderCreateEvent Function for load all event for header-create
  * Load all event and function for do create header
@@ -63,7 +115,7 @@ function loadHeaderCreateEvent(){
 
 
 /************************************************************************************************ */
-loadHeaderViewEvent();
+
 
 /**
  * #loadHeaderViewEvent Function for load all event for #header-view

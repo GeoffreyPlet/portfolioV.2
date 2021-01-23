@@ -1,0 +1,11 @@
+#close-create-maquette{
+    cursor: pointer;
+    padding: 0 1rem;
+    position: relative;
+    top: -1px;
+    color: #000;
+}
+#close-create-maquette:hover{
+    color: #fff;
+    background-color: rgb(223, 53, 53);
+}

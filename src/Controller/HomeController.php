@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Header;
+use App\Entity\Maquette;
 use App\Form\HeaderType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -30,6 +31,9 @@ class HomeController extends AbstractController
          */
             $repository = $this->getDoctrine()->getRepository(Header::class);
             $properties = $repository->findAll();
+
+            $repository = $this->getDoctrine()->getRepository(Maquette::class);
+            $allMaquette = $repository->findAll();
         /**
          * #END PHP SCRIPT FOR ADD VIEW HEADER
          */
@@ -75,6 +79,8 @@ class HomeController extends AbstractController
         return $this->render('home/create.html.twig', [
             'headerForm' => $form->createView(),
             'properties' => $properties,
+            'maquettes' => $allMaquette,
+            'display' => null,
         ]);
     }
 
