@@ -5,6 +5,7 @@ loadToolsEvent();
 loadHeaderCreateEvent();
 loadHeaderViewEvent();
 loadCreateMaquette();
+loadUploadSiteEvent();
 /********************************************* */
 
 /***
@@ -323,6 +324,28 @@ function loadHeaderViewEvent(){
 
             });
         });
+    });
+}
+
+/************************************************************************************************ */
+function loadUploadSiteEvent(){
+    $('#upload-site-btn').click(function(){
+        console.log($('#header').html());
+
+        /**
+         * JE doit faire une requete ajax en post avec les différent composant donc ici
+         * le header 
+         */
+        /* Create a object for give it in the post ajx request */
+        let value = new Object();
+        value["header"] = $('#header').html();
+
+         $.ajax('/ajax/upload/site', {
+             type : 'POST',
+             data : value,
+         }).then(function(response) {
+
+         });
     });
 }
 
