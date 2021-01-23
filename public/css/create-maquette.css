@@ -21,3 +21,11 @@
 .body .col-lg-3{
     cursor: pointer;
 }
+.maquette .footer span{
+    background-color: rgb(223, 53, 53);
+    color: #fff;
+}
+.maquette .footer span:hover{
+    background-color: rgb(190, 49, 49);
+    color: #fff;
+}

@@ -26,7 +26,6 @@ class AjaxController extends AbstractController
 
         //Return json for API
         return $this->json([
-            'header' => $header,
             'html' => $this->renderView('ajax/header.html.twig', ['headerForm' => $form->createView(), 'header' => $header]),
             ]);
     }
@@ -35,6 +34,7 @@ class AjaxController extends AbstractController
     public function upload(HeaderRepository $repository, Request $request){
 
         //Find header in bdd
+        dump($request->get('header')['id']);
         $header = $repository->find($request->get('header')['id']);
         $form = $this->createForm(HeaderType::class, $header);
 
@@ -46,18 +46,12 @@ class AjaxController extends AbstractController
 
          //Return json for API
         return $this->json([
-            'header' => $header,
             'htmlTest' => $this->renderView('home/view/header.html.twig', ['properties' => $properties]),
             'html' => $this->renderView('ajax/header.html.twig', ['headerForm' => $form->createView(), 'header' => $header]),
             ]);
     }
 
-    /**
-     *  - Lier le header a une entity Maquette
-     *              un header appartien a une ou plusieurs maquette 
-     *              une maquette possède un seul ou zero header
-     * on return un json html => $this->renderView('component/header/header.html.twig') avec la variable qu'il faut
-     */
+   
 
      #[Route('/ajax/add/view/header/{query}', name: 'ajax_add_view_header')]
      public function addViewHeader($query, HeaderRepository $repository, MaquetteRepository $repositoryMaquette){

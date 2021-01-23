@@ -1,4 +1,4 @@
-
+{% if header != null %}
 <div id="header">
     <div style="background-image: url({{ asset('img/uploads/' ~ header.image) }});
                 position: relative;
@@ -14,3 +14,4 @@
                             </div>
                     </div>
 <div>
+{% endif %}

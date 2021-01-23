@@ -13,6 +13,7 @@ loadCreateMaquette();
  * @close-create-maquette Event for hidden create-maquette
  * @create-maquette Event for add a maquette ( ajax request )
  * @selecting-maquette Event for select a maquette for start building view
+ * @delete-maquette Event for delete a maquette 
  * 
  */
 function loadCreateMaquette(){
@@ -48,15 +49,42 @@ function loadCreateMaquette(){
      * type:POST
      * change data of selecting 
      */
-    $('.maquette').click(function(event){
+    $('.my-maquette').click(function(){
         let value = new Object;
-        value['id'] = $($(event.currentTarget).children()[0]).attr('id').split('-').pop();
+        value['id'] = $(this).attr('id').split('-').pop();
 
         $.ajax('/ajax/select/maquette', {
             type: 'POST',
             data: value,
         }).then(function(response) {
+            
+            $('.create-maquette')[0].remove();
+            $('body').append(response.html);
 
+            $('#header').remove();
+            $('#view').append(response.htmlView);
+            loadCreateMaquette();
+        });
+    });
+
+    /**
+     * @delete-maquette
+     * [AJAX Request]
+     * type:POST
+     * Delete a maquette
+     */
+    $('.maquette .footer span').click(function(){
+
+        let value = new Object;
+        value['id'] = $(this).attr('id').split('-').pop();
+
+        $.ajax('/ajax/delete/maquette', {
+            type : 'POST',
+            data : value,
+        }).then(function(response) {
+            $('.create-maquette')[0].remove();
+            $('body').append(response.html);
+            loadCreateMaquette();
         });
     });
     
@@ -273,7 +301,7 @@ function loadHeaderViewEvent(){
 
         //Do en ajax call in symfony route
         $.ajax('/ajax/view/header/'+value, {
-            type: 'GET'
+            type: 'GET',
         }).then(function(response) {
             let html = response.html+'<div class="add-view-header" id="add-'+value+'">ajouter sur le header</div>';
             $('#active-boby').html(html);
@@ -282,11 +310,11 @@ function loadHeaderViewEvent(){
              * @add-view-header
              */
             $('.add-view-header').click(function(event){
-                let value = $(event.currentTarget).attr('id').split('-').pop();
+                let value2 = $(event.currentTarget).attr('id').split('-').pop();
 
                 
-                $.ajax('/ajax/add/view/header/'+value, {
-                    type: 'GET'
+                $.ajax('/ajax/add/view/header/'+value2, {
+                    type: 'GET',
                 }).then(function(response){
                     let html = response.html;
                     $('#view').html(html);

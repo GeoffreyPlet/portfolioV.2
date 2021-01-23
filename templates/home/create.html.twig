@@ -65,19 +65,19 @@
                                     {{maquette.header.description}}
                                 </p>
                             </div>
+                        </div>
                     </div>
-                <div>
                 {% endif %}
             {% endfor %}
         </div>
         <!-- #END [View of site] -->
-
+{% include 'home/modal/create-header.html.twig' %}
+    {% include 'home/view/header.html.twig' %}
+    {% include 'ajax/create-maquette.html.twig' %}
     </div>
     <!-- #END [background : back] -->
 
-    {% include 'home/modal/create-header.html.twig' %}
-    {% include 'home/view/header.html.twig' %}
-    {% include 'ajax/create-maquette.html.twig' %}
+    
 
    
 
