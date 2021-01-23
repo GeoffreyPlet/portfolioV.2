@@ -77,6 +77,12 @@ function loadToolsEvent(){
             for(let i = 0; i<$('.create-header').length; i++ ){
                 $('.create-header')[i].style.display = 'block';
             }
+            for(let i = 0; i<$('.header-view').length; i++){
+                $('.header-view')[i].style.display = 'none';
+            }
+            for(let i = 0; i<$('.create-maquette').length; i++){
+                $('.create-maquette')[i].style.display = 'none';
+            }
             $('body').css({
                 'background': '#788080',
             });
@@ -91,6 +97,12 @@ function loadToolsEvent(){
             for(let i = 0; i<$('.header-view').length; i++){
                 $('.header-view')[i].style.display = 'block';
             }
+            for(let i = 0; i<$('.create-header').length; i++){
+                $('.create-header')[i].style.display = 'none';
+            }
+            for(let i = 0; i<$('.create-maquette').length; i++){
+                $('.create-maquette')[i].style.display = 'none';
+            }
             $('body').css({
                 'background': '#788080',
             });
@@ -102,6 +114,12 @@ function loadToolsEvent(){
         $('#create-maquette-btn').click(function(){
             for(let i = 0; i<$('.create-maquette').length; i++){
                 $('.create-maquette')[i].style.display = 'block';
+            }
+            for(let i = 0; i<$('.header-view').length; i++){
+                $('.header-view')[i].style.display = 'none';
+            }
+            for(let i = 0; i<$('.create-header').length; i++){
+                $('.create-header')[i].style.display = 'none';
             }
             $('body').css({
                 'background': '#788080',

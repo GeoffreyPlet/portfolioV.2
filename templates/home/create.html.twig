@@ -50,7 +50,8 @@
         <!-- #START [View of site] -->
         <div id="view">
             {% for maquette in maquettes %}
-                {% if maquette.selecting == true %}
+                {% if maquette.selecting == true and maquette.header %}
+
                     <div id="header">
                         <div style="background-image: url({{ asset('img/uploads/' ~ maquette.header.image) }});
                                     position: relative;
