@@ -388,7 +388,7 @@ function loadUploadSiteEvent(){
              type : 'POST',
              data : value,
          }).then(function(response) {
-
+            window.location('/create');
          });
     });
 }

@@ -25,7 +25,8 @@ class AjaxUploadSiteController extends AbstractController
         $filesystem->copy($this->getParameter('upload_directory').'/'.$maquette->getHeader()->getImage(), '../creation/site-'.$maquette->getId().'/img/uploads/'.$maquette->getHeader()->getImage());
         
         $filesystem->dumpFile('../creation/site-'.$maquette->getId().'/index.html', $request->get('header'));
-        dump($request->get('header'));
-        
+        return $this->json([
+            'result' => 'success',
+        ]);
     }
 }
