@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Header;
 use App\Entity\Maquette;
+use App\Entity\Navbar;
 use App\Form\HeaderType;
+use App\Form\NavbarType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class HomeController extends AbstractController
 {
@@ -23,8 +26,23 @@ class HomeController extends AbstractController
 
     //Route for create a Header entity
     #[Route('/create', name: 'home_create')]
-    public function create(Request $request): Response
+    public function create(Request $request, ValidatorInterface $validator): Response
     {
+
+        /* #START [FORM NAVBAR] */
+            $navbar = new Navbar();
+            $formNavbar = $this->createForm(NavbarType::class, $navbar);
+            $formNavbar->handleRequest($request);
+
+            if($formNavbar->isSubmitted() && $formNavbar->isValid())
+            {
+                $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($navbar);
+                    $entityManager->flush();
+    
+                    return $this->redirectToRoute('home_create');
+            }
+        /* #END [FORM NAVBAR] */
 
         /**
          * #START PHP SCRIPT FOR ADD VIEW HEADER
@@ -47,7 +65,19 @@ class HomeController extends AbstractController
 
             $form->handleRequest($request); //Link the formulaire with request
             
-            
+
+            /* #START [CHECK ERRORS] */
+                $errorsHeader = $validator->validate($form);
+                /* If i got errors in my header form i set $displayHeader as block
+                * @displayHeader for kwon if show the modal create-header.html.twig 
+                */
+                if(!empty($errorsHeader[0])){
+                    $displayHeader = 'block';
+                }else{
+
+                    $displayHeader = 'none';
+                }
+            /* #STENDART [CHECK ERRORS] */
             if( $form->isSubmitted() && $form->isValid())
             {
                
@@ -64,14 +94,16 @@ class HomeController extends AbstractController
                         $header->setImage('default.jpg');
                     }
                     /* #END UPLOAD IMAGE */
+
+
     
                     $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($header);
                     $entityManager->flush();
-    
                     return $this->redirectToRoute('home_create');
                 
             }
+            
         /**
          * #END PHP SCRIPT FOR ADD A HEADER
          */
@@ -80,7 +112,10 @@ class HomeController extends AbstractController
             'headerForm' => $form->createView(),
             'properties' => $properties,
             'maquettes' => $allMaquette,
+            'navbarForm' => $formNavbar->createView(),
             'display' => null,
+            'errorsHeader' => $errorsHeader,
+            'displayHeader' => $displayHeader,
         ]);
     }
 

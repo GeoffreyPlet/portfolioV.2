@@ -6,6 +6,7 @@ use App\Repository\HeaderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=HeaderRepository::class)
@@ -21,16 +22,22 @@ class Header
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\NotBlank
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @Assert\Length(min=30)
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
     private $image;
 

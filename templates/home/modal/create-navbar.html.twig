@@ -1,0 +1,29 @@
+<div id="modal-create-navbar" hidden>
+    <div id="close-create-navbar" class="text-right">
+        <span>x</span>
+    </div>
+    <div class="p-4">
+        {{ form_start(navbarForm) }}
+            <div>
+                {{ form_row(navbarForm.name) }}
+            </div>
+            <div hidden>
+                {{ form_row(navbarForm.logo) }}
+            </div>
+            <div class="text-center">
+                <button formnovalidate>Ajouter</button>
+            </div>
+        {{ form_end(navbarForm) }}
+        <div class="d-flex flex-column">
+            <p class="m-0 mt-2 sous-titre text-center"> 
+                Crée une navbar avec un titre ou avec un logo
+            </p>
+            <div class="text-center">
+                <label for="nav-option" class="m-0">Titre - Logo</label>
+                <input type='radio' name="nav-option" id="nav-option" value="name" checked>
+                <input type='radio' name="nav-option" id="nav-option" value="logo">
+            </div>
+        </div>
+    </div>
+</div>
+

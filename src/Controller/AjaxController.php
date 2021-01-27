@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AjaxController extends AbstractController
 {
@@ -34,7 +35,6 @@ class AjaxController extends AbstractController
     public function upload(HeaderRepository $repository, Request $request){
 
         //Find header in bdd
-        dump($request->get('header')['id']);
         $header = $repository->find($request->get('header')['id']);
         $form = $this->createForm(HeaderType::class, $header);
 
@@ -71,5 +71,22 @@ class AjaxController extends AbstractController
          ]);
      }
 
+     #[Route('/ajax/create/header', name: 'ajax_create_header')]
+     public function createHeader(Request $request, ValidatorInterface $validator){
+        $header = new Header();
+        $form = $this->createForm(HeaderType::class, $header);
+
+            $form->handleRequest($request);
+            $errorsHeader = $validator->validate($form);
+
+        if(!empty($errorsHeader)){
+            dump($errorsHeader);
+        }else{
+            return $this->json([
+                
+            ]);
+        }
+       
+     }
     
 }

@@ -6,7 +6,7 @@
 
 
     <!-- #START filter-body -->
-    <div class="create-header-form create-header">
+    <div class="create-header-form create-header" style="display : {{displayHeader}}">
         <div  class="text-right">
             <span id="close-create-header">
                 x
@@ -33,7 +33,7 @@
                                     {{ form_widget(headerForm.title) }}
                                     {{ form_widget(headerForm) }}
                                 </div>
-                                <button formnovalidate>Ajouter</button>
+                                <button formnovalidate id="add-create-header-btn">Ajouter</button>
                             </div>
                         </div>
                     {{ form_end(headerForm) }}

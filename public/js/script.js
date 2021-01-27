@@ -196,6 +196,7 @@ function loadToolsEvent(){
  * Load all event and function for do create header
  * 
  * @close-create-header Event for close create-header
+ * @error-create-header Event for say errors formulaire
  * 
  */
 function loadHeaderCreateEvent(){
@@ -213,6 +214,26 @@ function loadHeaderCreateEvent(){
             'background': 'none',
         });
     });
+
+    /**
+     * @error-create-header
+     * Say if formulaire isValid()
+     */
+    /* $('#add-create-header-btn').click(function() {
+        $('form').submit(function(event) {
+            event.preventDefault();
+
+            var value = $(this).serialize();
+
+            $.ajax('/ajax/create/header', {
+                type: 'POST',
+                data: value,
+            }).then(function(response){
+                console.log(response);
+            });
+            console.log(value);
+        })
+    }); */
 }
 
 

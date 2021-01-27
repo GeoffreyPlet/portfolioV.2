@@ -6,8 +6,13 @@
     <link rel="stylesheet" href="{{ asset('css/create-maquette.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/create-header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header-view.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create-navbar.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('js/create-navbar.js') }}"></script>
+{% endblock %}
 
 {% block body %}
 
@@ -17,6 +22,8 @@
         <!-- #START [toolsBar] -->
         <div class="tools-bar">
                 <div class="tools-row pt-3">
+                    <div class="list">
+                    </div>
                     <div id="create-maquette-btn" class="d-flex my-1 py-1" style="color: #fff;
                                                                                   cursor: pointer;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-clipboard ml-2" viewBox="0 0 16 16">
@@ -56,6 +63,7 @@
 
         <!-- #START [View of site] -->
         <div id="view">
+        
             {% for maquette in maquettes %}
                 {% if maquette.selecting == true and maquette.header %}
 
@@ -84,6 +92,7 @@
     {% include 'home/modal/create-header.html.twig' %}
     {% include 'home/view/header.html.twig' %}
     {% include 'ajax/create-maquette.html.twig' %}
+    {% include 'home/modal/create-navbar.html.twig' %}
     </div>
     <!-- #END [background : back] -->
 
