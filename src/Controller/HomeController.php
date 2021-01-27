@@ -44,21 +44,19 @@ class HomeController extends AbstractController
                 
                 }
                 else{
-                    /* Ici le propriétée name de l'entity navbar doit prendre le nom de l'image
-                        Il faut faire l'upload de l'image */
 
-                        /* #START UPLOAD IMAGE */
-                    /** @var UploadedFile $image */
-                    $image = $formNavbar->get('logo')->getData();
-                    if($image)
-                    {
-                        $fileName = uniqid().'.'.$image->guessExtension();
-                        $image->move($this->getParameter('upload_directory'), $fileName);
-                        $navbar->setName($fileName);
-                    } else
-                    {
-                        $navbar->setName('default.jpg');
-                    }
+                    /* #START UPLOAD IMAGE */
+                        /** @var UploadedFile $image */
+                        $image = $formNavbar->get('logo')->getData();
+                        if($image)
+                        {
+                            $fileName = uniqid().'.'.$image->guessExtension();
+                            $image->move($this->getParameter('upload_directory'), $fileName);
+                            $navbar->setName($fileName);
+                        } else
+                        {
+                            $navbar->setName('default.jpg');
+                        }
                     /* #END UPLOAD IMAGE */
 
                     $displayNavbar = 'none';
