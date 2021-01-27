@@ -13,8 +13,11 @@ class NavbarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', null, [
+                'label' => 'Nom du site',
+            ])
             ->add('logo', FileType::class, [
+                'label' => 'Logo du site',
                 'mapped' => false,
             ])
         ;

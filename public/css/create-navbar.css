@@ -24,3 +24,6 @@ input[type='radio']{
     position: relative;
     top: 2px;
 }
+label{
+    margin: 0;
+}

@@ -33,8 +33,38 @@ class HomeController extends AbstractController
             $navbar = new Navbar();
             $formNavbar = $this->createForm(NavbarType::class, $navbar);
             $formNavbar->handleRequest($request);
+            $errorsNavbar = [];
 
-            if($formNavbar->isSubmitted() && $formNavbar->isValid())
+
+            
+            /* #START [GET ERRORS NAVBAR] */
+                if(!empty($request->get('nav-option')) && $request->get('nav-option') === 'name'){
+                    $errorsNavbar[] = 'Le nom du site ne peut pas être vide';
+                    $displayNavabar = 'block';
+                }
+                else{
+                    /* Ici le propriétée name de l'entity navbar doit prendre le nom de l'image
+                        Il faut faire l'upload de l'image */
+
+                        /* #START UPLOAD IMAGE */
+                    /** @var UploadedFile $image */
+                    $image = $formNavbar->get('logo')->getData();
+                    if($image)
+                    {
+                        $fileName = uniqid().'.'.$image->guessExtension();
+                        $image->move($this->getParameter('upload_directory'), $fileName);
+                        $navbar->setName($fileName);
+                    } else
+                    {
+                        $navbar->setName('default.jpg');
+                    }
+                    /* #END UPLOAD IMAGE */
+
+                    $displayNavabar = 'none';
+                }
+            /* #END [GET ERRORS NAVBAR] */
+
+            if($formNavbar->isSubmitted() && $formNavbar->isValid() && empty($errorsNavbar))
             {
                 $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($navbar);
@@ -116,6 +146,8 @@ class HomeController extends AbstractController
             'display' => null,
             'errorsHeader' => $errorsHeader,
             'displayHeader' => $displayHeader,
+            'errorsNavbar' => $errorsNavbar,
+            'displayNavbar' => $displayNavabar,
         ]);
     }
 
