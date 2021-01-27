@@ -4,8 +4,28 @@
     padding-bottom: 40px;
 }
 #view{
-    margin-left: 140px; 
+    margin-left: 210px; 
     margin-right: 40px;
     background-color: #fff;
 }
+.add-view-header{
+    text-align: center;
+    
+}
+.add-view-header span{
+    padding: 1rem;
+    border: 1px solid;
+    position: relative;
+    cursor: pointer;
+    top: -50px;
+}
+.add-view-header span:hover{
+    border: 1px solid #008000;
+    background-color: #008000;
+    color: #fff;
+}
 
+.sous-titre{
+    display: inline-block;
+    font-size: 0.7rem;
+}

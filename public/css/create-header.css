@@ -10,11 +10,10 @@
 .create-header-form{
     background-color: #fff;
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 25%;
     left: 25%;
     width: 50%;
-    padding: 2rem;
     flex-direction: column;
     justify-content: center;
 
@@ -32,4 +31,7 @@
 #close-create-header:hover{
     color: #fff;
     background-color: rgb(223, 53, 53);
+}
+form[name='header']{
+    padding: 2rem;
 }

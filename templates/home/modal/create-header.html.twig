@@ -7,7 +7,15 @@
 
     <!-- #START filter-body -->
     <div class="create-header-form create-header">
-
+        <div  class="text-right">
+            <span id="close-create-header">
+                x
+            </span>
+        </div>
+        <div class="text-center">
+            <h3 class="m-0">Creation de header</h3>
+            <span class="w-100 sous-titre">Crée un header pour pouvoir l'associer a une maquette</span>
+        </div>
                     <!-- #START form -->
                     {{ form_start(headerForm) }}
                     
@@ -19,11 +27,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-end" >
-                                <div  class="text-right">
-                                    <span id="close-create-header">
-                                        x
-                                    </span>
-                                </div>
+                                
                                 <div class="w-100">
                                     {{ form_label(headerForm.title, 'Titre') }}
                                     {{ form_widget(headerForm.title) }}
@@ -37,3 +41,4 @@
 
         </div>
         <!-- #END filter-body -->
+      

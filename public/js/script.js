@@ -22,6 +22,10 @@ function loadCreateMaquette(){
      *  @close-create-maquette
      */
     $('#close-create-maquette').click(function(){
+        //Style CSS for tools bar
+        $('#create-maquette-btn').css({
+            'background': 'none',
+        });
         for(let i = 0; i<$('.create-maquette').length; i++ ){
             $('.create-maquette')[i].style.display = 'none';
         }
@@ -103,6 +107,16 @@ function loadToolsEvent(){
          * @show-creat-header
          */
         $('#create-header-btn').click(function (){
+            //Style css for tools bar
+            $(this).css({
+                'background': '#fed778c7',
+            });
+            $('#create-maquette-btn').css({
+                'background': 'none',
+            });
+            $('#view-header-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.create-header').length; i++ ){
                 $('.create-header')[i].style.display = 'block';
             }
@@ -123,6 +137,15 @@ function loadToolsEvent(){
          * @show-view_header
          */
         $('#view-header-btn').click(function(){
+            $(this).css({
+                'background': '#fed778c7',
+            });
+            $('#create-maquette-btn').css({
+                'background': 'none',
+            });
+            $('#create-header-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.header-view').length; i++){
                 $('.header-view')[i].style.display = 'block';
             }
@@ -141,6 +164,16 @@ function loadToolsEvent(){
          *  @show-create-maquette
          */
         $('#create-maquette-btn').click(function(){
+            //Style css for tools bar
+            $(this).css({
+                'background': '#fed778c7',
+            });
+            $('#create-header-btn').css({
+                'background': 'none',
+            });
+            $('#view-header-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.create-maquette').length; i++){
                 $('.create-maquette')[i].style.display = 'block';
             }
@@ -170,6 +203,9 @@ function loadHeaderCreateEvent(){
      * Hidde the formulaire for create header
      */
     $('#close-create-header').click(function (){
+        $('#create-header-btn').css({
+            'background':'none',
+        });
         for(let i = 0; i<$('.create-header').length; i++ ){
             $('.create-header')[i].style.display = 'none';
         }
@@ -201,6 +237,9 @@ function loadHeaderViewEvent(){
          * @close-header-view
          */
         $('#close-header-view').click(function (){
+            $('#view-header-btn').css({
+                'background':'none',
+            });
             for(let i = 0; i<$('.header-view').length; i++ ){
                 $('.header-view')[i].style.display = 'none';
             }
@@ -304,7 +343,7 @@ function loadHeaderViewEvent(){
         $.ajax('/ajax/view/header/'+value, {
             type: 'GET',
         }).then(function(response) {
-            let html = response.html+'<div class="add-view-header" id="add-'+value+'">ajouter sur le header</div>';
+            let html = response.html+'<div class="add-view-header" id="add-'+value+'"><span class="m-0">ajouter sur le header</span></div>';
             $('#active-boby').html(html);
 
             /**

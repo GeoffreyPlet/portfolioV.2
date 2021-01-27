@@ -8,6 +8,7 @@
 #close-create-maquette:hover{
     color: #fff;
     background-color: rgb(223, 53, 53);
+    padding-bottom: 4px;
 }
 #create-maquette{
     border: 1px solid #000;
@@ -17,6 +18,11 @@
     border: 1px solid #008000;
     background-color: #008000;
     color: #fff;
+}
+#maquette-modal{
+    top: 25%;
+    left: 25%;
+    background-color: #fff;
 }
 .body .col-lg-3{
     cursor: pointer;

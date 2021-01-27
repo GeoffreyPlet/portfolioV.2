@@ -2,22 +2,23 @@
     <script src="{{ asset('js/ajax/create-maquette.js') }}"></script>
 {% endblock %}
 
-<div class="position-absolute w-50 create-maquette" style="top: 25%;
-                                                left: 25%;
-                                                background-color: #fff;
-                                                display: {{display ? display : 'none'}};">
+<div id="maquette-modal" class="position-fixed w-50 create-maquette" style="display: {{display ? display : 'none'}};">
     <div class="text-right">
         <span id="close-create-maquette">
             x
         </span>
     </div>
+    <div>
+        <h3 class="m-0 text-center">Maquette setting</h3>
+        <span class="text-center sous-titre w-100">Ajouter une maquette, ou selecté une maquette pour commencer votre projet</span>
+    </div>
     <div class="body d-flex flex-wrap">
         {% for maquette in maquettes %}
             <div class="col-lg-3 mt-3 maquette">
                 <div id="maquette-{{maquette.id}}" class=" p-2 border shadow my-maquette">
-                    <p class="m-0">Maquette - {{maquette.id}}</p>
+                    <p class="m-0 text-center">Maquette - {{maquette.id}}</p>
                     {% if maquette.header %}
-                        <p class="sous-titre">Header</p>
+                        <p class="m-0 sous-titre">Cette maquette possède un header</p>
                         <div>
                             <img width="100%" src="{{ asset('img/uploads/' ~ maquette.header.image) }}">
                         </div>
