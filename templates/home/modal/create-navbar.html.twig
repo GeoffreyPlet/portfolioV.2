@@ -1,6 +1,14 @@
-<div id="modal-create-navbar" style="display: {{displayNavbar ? 'block' : displayNavbar}}">
+<div id="modal-create-navbar" style="display: {{displayNavbar ? displayNavbar : 'none'}}">
     <div id="close-create-navbar" class="text-right">
         <span>x</span>
+    </div>
+    <div class="text-center">
+        <h3 class="m-0">
+            Navbar setting
+        </h3>
+        <span class="sous-titre px-2">
+            Crée un navbar pour pouvoir la configuer et l'afficher sur votre view
+        </span>
     </div>
     <div class="p-4">
         {{ form_start(navbarForm) }}
@@ -29,7 +37,7 @@
                 <div class="text-center">
                     <label for="nav-option" class="m-0">Titre - Logo</label>
                     <input type='radio' name="nav-option" id="nav-option" value="name" checked>
-                    <input type='radio' name="nav-option" id="nav-option" value="logo">
+                    <input type='radio' name="nav-option" id="nav-option-logo" value="logo">
                 </div>
             </div>
         {{ form_end(navbarForm) }}

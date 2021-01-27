@@ -71,22 +71,6 @@ class AjaxController extends AbstractController
          ]);
      }
 
-     #[Route('/ajax/create/header', name: 'ajax_create_header')]
-     public function createHeader(Request $request, ValidatorInterface $validator){
-        $header = new Header();
-        $form = $this->createForm(HeaderType::class, $header);
-
-            $form->handleRequest($request);
-            $errorsHeader = $validator->validate($form);
-
-        if(!empty($errorsHeader)){
-            dump($errorsHeader);
-        }else{
-            return $this->json([
-                
-            ]);
-        }
-       
-     }
+     
     
 }

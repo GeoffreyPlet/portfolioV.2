@@ -101,6 +101,7 @@ function loadCreateMaquette(){
  * @show-create-header Event for show create tools
  * @show-view-header Event for show view tools
  * @show-create-maquette
+ * @show-create-navbar
  */
 function loadToolsEvent(){
         /**
@@ -117,6 +118,9 @@ function loadToolsEvent(){
             $('#view-header-btn').css({
                 'background': 'none',
             });
+            $('#create-navbar-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.create-header').length; i++ ){
                 $('.create-header')[i].style.display = 'block';
             }
@@ -126,6 +130,9 @@ function loadToolsEvent(){
             for(let i = 0; i<$('.create-maquette').length; i++){
                 $('.create-maquette')[i].style.display = 'none';
             }
+            $('#modal-create-navbar').css({
+                'display' : 'none',
+            });
             $('body').css({
                 'background': '#788080',
             });
@@ -146,6 +153,9 @@ function loadToolsEvent(){
             $('#create-header-btn').css({
                 'background': 'none',
             });
+            $('#create-navbar-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.header-view').length; i++){
                 $('.header-view')[i].style.display = 'block';
             }
@@ -155,6 +165,9 @@ function loadToolsEvent(){
             for(let i = 0; i<$('.create-maquette').length; i++){
                 $('.create-maquette')[i].style.display = 'none';
             }
+            $('#modal-create-navbar').css({
+                'display' : 'none',
+            });
             $('body').css({
                 'background': '#788080',
             });
@@ -174,8 +187,49 @@ function loadToolsEvent(){
             $('#view-header-btn').css({
                 'background': 'none',
             });
+            $('#create-navbar-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.create-maquette').length; i++){
                 $('.create-maquette')[i].style.display = 'block';
+            }
+            for(let i = 0; i<$('.header-view').length; i++){
+                $('.header-view')[i].style.display = 'none';
+            }
+            for(let i = 0; i<$('.create-header').length; i++){
+                $('.create-header')[i].style.display = 'none';
+            }
+            $('#modal-create-navbar').css({
+                'display' : 'none',
+            });
+            $('body').css({
+                'background': '#788080',
+            });
+        });
+
+        /**
+         * @show-create-navbar
+         */
+        $('#create-navbar-btn').click(function(){
+            //Style css for tools bar
+            $(this).css({
+                'background': '#fed778c7',
+            });
+            $('#create-header-btn').css({
+                'background': 'none',
+            });
+            $('#view-header-btn').css({
+                'background': 'none',
+            });
+            $('#create-maquette-btn').css({
+                'background': 'none',
+            });
+
+            $('#modal-create-navbar').css({
+                'display' : 'block',
+            });
+            for(let i = 0; i<$('.create-maquette').length; i++){
+                $('.create-maquette')[i].style.display = 'none';
             }
             for(let i = 0; i<$('.header-view').length; i++){
                 $('.header-view')[i].style.display = 'none';
@@ -186,7 +240,7 @@ function loadToolsEvent(){
             $('body').css({
                 'background': '#788080',
             });
-        })
+        });
 }
 
 /******************************************************************************** */
@@ -214,26 +268,6 @@ function loadHeaderCreateEvent(){
             'background': 'none',
         });
     });
-
-    /**
-     * @error-create-header
-     * Say if formulaire isValid()
-     */
-    /* $('#add-create-header-btn').click(function() {
-        $('form').submit(function(event) {
-            event.preventDefault();
-
-            var value = $(this).serialize();
-
-            $.ajax('/ajax/create/header', {
-                type: 'POST',
-                data: value,
-            }).then(function(response){
-                console.log(response);
-            });
-            console.log(value);
-        })
-    }); */
 }
 
 

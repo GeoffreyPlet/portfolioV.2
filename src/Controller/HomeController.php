@@ -40,7 +40,8 @@ class HomeController extends AbstractController
             /* #START [GET ERRORS NAVBAR] */
                 if(!empty($request->get('nav-option')) && $request->get('nav-option') === 'name'){
                     $errorsNavbar[] = 'Le nom du site ne peut pas être vide';
-                    $displayNavabar = 'block';
+                    $displayNavbar = 'block';
+                
                 }
                 else{
                     /* Ici le propriétée name de l'entity navbar doit prendre le nom de l'image
@@ -60,7 +61,7 @@ class HomeController extends AbstractController
                     }
                     /* #END UPLOAD IMAGE */
 
-                    $displayNavabar = 'none';
+                    $displayNavbar = 'none';
                 }
             /* #END [GET ERRORS NAVBAR] */
 
@@ -147,7 +148,7 @@ class HomeController extends AbstractController
             'errorsHeader' => $errorsHeader,
             'displayHeader' => $displayHeader,
             'errorsNavbar' => $errorsNavbar,
-            'displayNavbar' => $displayNavabar,
+            'displayNavbar' => $displayNavbar,
         ]);
     }
 

@@ -10,3 +10,11 @@ $("input[type='radio']").change(function(event){
         inputLogo.hidden = true;
     }
 });
+$('#close-create-navbar').click(function(){
+    $('#modal-create-navbar').css({
+        'display' : 'none',
+    });
+    $('#create-navbar-btn').css({
+        'background': 'none',
+    });
+});
