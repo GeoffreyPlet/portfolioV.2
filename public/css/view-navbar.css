@@ -1,0 +1,23 @@
+#view-navbar{
+    background-color: #fff;
+    position: fixed;
+    top: 5%;
+    left: 30%;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+}
+#close-view-navbar{
+    padding: 0 12px;
+    position: relative;
+    top: -1px;
+}
+#close-view-navbar:hover{
+    color: #fff;
+    background-color: rgb(223, 53, 53);
+    cursor: pointer;
+}
+.scroll{
+    height: 300px;
+    overflow: auto;
+}

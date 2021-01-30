@@ -1,0 +1,42 @@
+<div id="view-navbar" style="display:none;">
+    <div class="text-right">
+        <span id="close-view-navbar">x</span>
+    </div>
+    <div>
+        <div class="text-center">
+            <h3 class="m-0">View navbar</h3>
+            <span class="sous-titre">Sélectionnez une navbar est commencer son intégration</span>
+        </div>
+        <div class="scroll">
+        {% for navbar in navbars %}
+            <nav class="navbar navbar-light bg-light border my-2 mx-1" id="navbar-{{navbar.id}}">
+                {% if navbar.name|split('.')|length == 1 %}
+                    <span class="navbar-brand mb-0 h1">{{navbar.name}}</span>
+                {% else %}
+                    <img class="img-fluid" width="64px" height="100%" src="{{ asset('img/uploads/' ~ navbar.name) }}">
+                {% endif %}
+                
+                
+                <div>
+                    <ul class="navbar-nav mr-auto d-flex flex-row">
+                        {% for route in routes %}
+
+                            {% if route.navbar.id == navbar.id %}
+                                    <li class="nav-item mx-2">
+                                        <a class="nav-link" href="#">{{route.name}}</a>
+                                    </li>
+                                
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        {% endfor %}
+        </div>
+        <div id="form-navbar" class="row">
+        </div>
+    </div>
+    
+</div>
+
+    

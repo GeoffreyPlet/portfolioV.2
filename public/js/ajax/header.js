@@ -3,7 +3,7 @@
 
 
 $('.update-header').click(function() {
-    $('form').submit(function(event){
+    $('#form-header form').submit(function(event){
         event.preventDefault();
 
         var value = $(this).serialize();

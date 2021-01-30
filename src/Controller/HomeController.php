@@ -7,6 +7,8 @@ use App\Entity\Maquette;
 use App\Entity\Navbar;
 use App\Form\HeaderType;
 use App\Form\NavbarType;
+use App\Repository\NavbarRepository;
+use App\Repository\RouteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,28 +28,32 @@ class HomeController extends AbstractController
 
     //Route for create a Header entity
     #[Route('/create', name: 'home_create')]
-    public function create(Request $request, ValidatorInterface $validator): Response
+    public function create(Request $request, ValidatorInterface $validator, NavbarRepository $navbarRepository, RouteRepository $routeRepository): Response
     {
+        $allRoute = $routeRepository->findAll();
+        $allNavbar = $navbarRepository->findAll();
 
         /* #START [FORM NAVBAR] */
             $navbar = new Navbar();
-            $formNavbar = $this->createForm(NavbarType::class, $navbar);
-            $formNavbar->handleRequest($request);
+            $formNavbare = $this->createForm(NavbarType::class, $navbar);
+            $formNavbare->handleRequest($request);
             $errorsNavbar = [];
 
 
             
             /* #START [GET ERRORS NAVBAR] */
-                if(!empty($request->get('nav-option')) && $request->get('nav-option') === 'name'){
+                if(empty($request->get('navbar')['name']) && $request->get('nav-option') === 'name'){
                     $errorsNavbar[] = 'Le nom du site ne peut pas être vide';
                     $displayNavbar = 'block';
                 
+                }elseif(!empty($request->get('navbar')['name']) && $request->get('nav-option') === 'name'){
+                    $navbar->setName($request->get('navbar')['name']);
                 }
                 else{
 
                     /* #START UPLOAD IMAGE */
                         /** @var UploadedFile $image */
-                        $image = $formNavbar->get('logo')->getData();
+                        $image = $formNavbare->get('logo')->getData();
                         if($image)
                         {
                             $fileName = uniqid().'.'.$image->guessExtension();
@@ -63,7 +69,7 @@ class HomeController extends AbstractController
                 }
             /* #END [GET ERRORS NAVBAR] */
 
-            if($formNavbar->isSubmitted() && $formNavbar->isValid() && empty($errorsNavbar))
+            if($formNavbare->isSubmitted() && $formNavbare->isValid() && empty($errorsNavbar))
             {
                 $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($navbar);
@@ -136,12 +142,16 @@ class HomeController extends AbstractController
         /**
          * #END PHP SCRIPT FOR ADD A HEADER
          */
+
+
         
         return $this->render('home/create.html.twig', [
             'headerForm' => $form->createView(),
             'properties' => $properties,
             'maquettes' => $allMaquette,
-            'navbarForm' => $formNavbar->createView(),
+            'navbars' => $allNavbar,
+            'routes' => $allRoute,
+            'navbarForm' => $formNavbare->createView(),
             'display' => null,
             'errorsHeader' => $errorsHeader,
             'displayHeader' => $displayHeader,

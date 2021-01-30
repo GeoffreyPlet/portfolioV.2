@@ -121,6 +121,9 @@ function loadToolsEvent(){
             $('#create-navbar-btn').css({
                 'background': 'none',
             });
+            $('#view-navbar-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.create-header').length; i++ ){
                 $('.create-header')[i].style.display = 'block';
             }
@@ -131,6 +134,9 @@ function loadToolsEvent(){
                 $('.create-maquette')[i].style.display = 'none';
             }
             $('#modal-create-navbar').css({
+                'display' : 'none',
+            });
+            $('#view-navbar').css({
                 'display' : 'none',
             });
             $('body').css({
@@ -156,6 +162,9 @@ function loadToolsEvent(){
             $('#create-navbar-btn').css({
                 'background': 'none',
             });
+            $('#view-navbar-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.header-view').length; i++){
                 $('.header-view')[i].style.display = 'block';
             }
@@ -166,6 +175,9 @@ function loadToolsEvent(){
                 $('.create-maquette')[i].style.display = 'none';
             }
             $('#modal-create-navbar').css({
+                'display' : 'none',
+            });
+            $('#view-navbar').css({
                 'display' : 'none',
             });
             $('body').css({
@@ -190,6 +202,9 @@ function loadToolsEvent(){
             $('#create-navbar-btn').css({
                 'background': 'none',
             });
+            $('#view-navbar-btn').css({
+                'background': 'none',
+            });
             for(let i = 0; i<$('.create-maquette').length; i++){
                 $('.create-maquette')[i].style.display = 'block';
             }
@@ -200,6 +215,9 @@ function loadToolsEvent(){
                 $('.create-header')[i].style.display = 'none';
             }
             $('#modal-create-navbar').css({
+                'display' : 'none',
+            });
+            $('#view-navbar').css({
                 'display' : 'none',
             });
             $('body').css({
@@ -227,6 +245,12 @@ function loadToolsEvent(){
 
             $('#modal-create-navbar').css({
                 'display' : 'block',
+            });
+            $('#view-navbar').css({
+                'display' : 'none',
+            });
+            $('#view-navbar-btn').css({
+                'background': 'none',
             });
             for(let i = 0; i<$('.create-maquette').length; i++){
                 $('.create-maquette')[i].style.display = 'none';

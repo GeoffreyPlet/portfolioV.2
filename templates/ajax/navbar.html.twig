@@ -1,0 +1,25 @@
+{{ form_start(formNavbar, {'attr': {'class': 'd-flex w-100 p-3'}}) }}
+    <div class="col-6">
+        <h3 class="text-center m-0">Navabr setting</h3>
+        <span class="sous-titre w-100 text-center">
+            Changer les paramètres de la navbar
+        </span>
+        {{ form_row(formNavbar.name) }}
+        {{ form_row(formNavbar.logo) }}
+    </div>
+    <div class="col-6">
+        <h3 class="text-center m-0">Route option</h3>
+        <span class="sous-titre w-100 text-center">
+            Configurez les route de votre navbar
+        </span>
+        <div class="text-center border shadow p-3">
+            <div>
+            <label for="route-label">Nom de la route</label>
+                <input type="text" class="form-control" name="route-name" id="route-label" >
+                <input type="text" hidden  value="{{id}}" name="navbar-relation">
+            </div>
+            <button formnovalidate id="add-route-navbar" class="mt-3">Ajouter une route</button>
+        </div>
+    </div>
+{{ form_end(formNavbar, {'render_rest': false}) }}
+

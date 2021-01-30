@@ -19,6 +19,7 @@ class NavbarType extends AbstractType
             ->add('logo', FileType::class, [
                 'label' => 'Logo du site',
                 'mapped' => false,
+                'help' => 'Choisir un logo annule le nom du site.'
             ])
         ;
     }

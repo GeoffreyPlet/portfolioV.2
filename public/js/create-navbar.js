@@ -18,3 +18,5 @@ $('#close-create-navbar').click(function(){
         'background': 'none',
     });
 });
+
+
