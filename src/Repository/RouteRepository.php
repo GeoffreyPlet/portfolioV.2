@@ -19,6 +19,18 @@ class RouteRepository extends ServiceEntityRepository
         parent::__construct($registry, Route::class);
     }
 
+    public function findRouteWithNavbarId($value)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.navbar = :val')
+            ->setParameter('val', $value)
+            ->orderBy('r.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Route[] Returns an array of Route objects
     //  */

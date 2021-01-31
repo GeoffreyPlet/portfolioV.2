@@ -71,34 +71,16 @@ function loadEventNavbar(){
                 $('#view-navbar #navbar_name').keyup(function() {
                     $('#view-navbar #navbar_logo').val(null);
                 });
-                console.log($('form'));
+                loadEventUtils();
+                
+                
+                 
+                
 
-                /* #DEBUT [AJAX ADD ROUTE FOR NAVBAR] */
-                   
-                /* #FIN [AJAX ADD ROUTE FOR NAVBAR] */
-
-                $('#form-navbar form').submit(function(event){
-                            
-
-                            event.preventDefault();
-                            var value = $(this).serialize();
-                            
-
-                            $.ajax('/ajax/view/navbar/add/route', {
-                                type: 'POST',
-                                data: value,
-                               
-                            }).then(function(response){
-                                $('#view-navbar').html(response.htmlNavbarView);
-                                $('#form-navbar').html(response.html);
-                                loadEventNavbar();
-                                
-                            });
-                        });
 
             /* #FIN [EVENT FOR DYNAMIQUE RESPONSE] */
 
-    });
+        });
    
     });
     /**
@@ -108,4 +90,74 @@ function loadEventNavbar(){
     
 
 }
+
+function loadEventUtils(){
+    /* #DEBUT [AJAX DELETE NAVBAR] */
+    $('#delete-navbar').click(function(){
+        var value =  $('input[name="navbar-relation"]').val();
+        $.ajax('/ajax/view/navbar/delete/navbar', {
+            type: 'POST',
+            data: {'id': value},
+        }).then(function(response){
+             $('#view-navbar').html(response.html);
+             loadEventUtils();
+        });
+     });
+ /* #FIN [AJAX DELETE NAVBAR] */
+
+ /* #DEBUT [AJAX UPDATE NAVBAR] */
+ $('#update-navbar').click(function(){
+     var value = $('input[name="navbar-relation"]').val();
+     var name = $('#form-navbar #navbar_name').val();
+     $.ajax('/ajax/view/navbar/update/navbar', {
+         type: 'POST',
+         data: {'id': value,
+                 'name': name},
+     }).then(function(response){
+         $('#view-navbar').html(response.htmlNavbarView);
+         $('#form-navbar').html(response.html);
+         loadEventUtils();
+     });
+ });
+ /* #FIN [AJAX UPDATE NAVBAR] */
+
+ /* #DEBUT [AJAX ADD ROUTE FOR NAVBAR] */
+ $('#form-navbar form').submit(function(event){
+
+    event.preventDefault();
+    var value = $(this).serialize();
+            
+
+    $.ajax('/ajax/view/navbar/add/route', {
+        type: 'POST',
+        data: value,
+            
+    }).then(function(response){
+        $('#view-navbar').html(response.htmlNavbarView);
+        $('#form-navbar').html(response.html);
+        loadEventUtils();
+                
+    });
+});
+/* #FIN [AJAX ADD ROUTE FOR NAVBAR] */
+
+/* #DEBUT [AJAX ADD NAVBAR FOR HEADER] */
+$('#btn-add-navbar-header').click(function(){
+        
+    var value = $('input[name="navbar-relation"]').val();
+
+    $.ajax('/ajax/view/navbar/add/header/'+value, {
+        type: 'GET',
+            
+    }).then(function(response){
+        let html = response.html;
+        $('#header').prepend(html);
+        loadEventUtils();
+                
+    });
+});
+/* #FIN [AJAX ADD NAVBAR FOR HEADER] */
 loadEventNavbar();
+}
+loadEventNavbar();
+loadEventUtils();

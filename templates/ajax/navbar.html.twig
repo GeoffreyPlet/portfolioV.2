@@ -6,6 +6,10 @@
         </span>
         {{ form_row(formNavbar.name) }}
         {{ form_row(formNavbar.logo) }}
+        <div class="d-flex">
+            <span class="p-2 border btn-delete" id="delete-navbar">Supprimer</span>
+            <span class="p-2 ml-2 border btn-update" id="update-navbar">Modifier</span>
+        </div>
     </div>
     <div class="col-6">
         <h3 class="text-center m-0">Route option</h3>
@@ -14,11 +18,14 @@
         </span>
         <div class="text-center border shadow p-3">
             <div>
-            <label for="route-label">Nom de la route</label>
+                <label for="route-label">Nom de la route</label>
                 <input type="text" class="form-control" name="route-name" id="route-label" >
                 <input type="text" hidden  value="{{id}}" name="navbar-relation">
             </div>
             <button formnovalidate id="add-route-navbar" class="mt-3">Ajouter une route</button>
+        </div>
+        <div>
+            <span class="p-2 border" id="btn-add-navbar-header">Ajouter au header</span>
         </div>
     </div>
 {{ form_end(formNavbar, {'render_rest': false}) }}

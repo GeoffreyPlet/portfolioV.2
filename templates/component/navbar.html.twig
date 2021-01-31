@@ -1,0 +1,22 @@
+<nav class="navbar navbar-light bg-light border m-0" id="navbar-{{navbar.id}}">
+    {% if navbar.name|split('.')|length == 1 %}
+        <span class="navbar-brand mb-0 h1">{{navbar.name}}</span>
+    {% else %}
+        <img class="img-fluid" width="64px" height="100%" src="{{ asset('img/uploads/' ~ navbar.name) }}">
+    {% endif %}
+                
+                
+    <div>
+        <ul class="navbar-nav mr-auto d-flex flex-row">
+            {% for route in routes %}
+
+                {% if route.navbar.id == navbar.id %}
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">{{route.name}}</a>
+                    </li>
+                                
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

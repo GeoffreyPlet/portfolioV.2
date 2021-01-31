@@ -30,9 +30,15 @@ class Navbar
      */
     private $route;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Maquette::class, mappedBy="navbar")
+     */
+    private $maquettes;
+
     public function __construct()
     {
         $this->route = new ArrayCollection();
+        $this->maquettes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +82,36 @@ class Navbar
             // set the owning side to null (unless already changed)
             if ($route->getNavbar() === $this) {
                 $route->setNavbar(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Maquette[]
+     */
+    public function getMaquettes(): Collection
+    {
+        return $this->maquettes;
+    }
+
+    public function addMaquette(Maquette $maquette): self
+    {
+        if (!$this->maquettes->contains($maquette)) {
+            $this->maquettes[] = $maquette;
+            $maquette->setNavbar($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaquette(Maquette $maquette): self
+    {
+        if ($this->maquettes->removeElement($maquette)) {
+            // set the owning side to null (unless already changed)
+            if ($maquette->getNavbar() === $this) {
+                $maquette->setNavbar(null);
             }
         }
 

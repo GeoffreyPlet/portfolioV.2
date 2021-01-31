@@ -27,6 +27,11 @@ class Maquette
      */
     private $selecting;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Navbar::class, inversedBy="maquettes")
+     */
+    private $navbar;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Maquette
     public function setSelecting(bool $selecting): self
     {
         $this->selecting = $selecting;
+
+        return $this;
+    }
+
+    public function getNavbar(): ?Navbar
+    {
+        return $this->navbar;
+    }
+
+    public function setNavbar(?Navbar $navbar): self
+    {
+        $this->navbar = $navbar;
 
         return $this;
     }
