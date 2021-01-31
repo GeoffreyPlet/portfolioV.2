@@ -71,13 +71,26 @@ function loadEventNavbar(){
                 $('#view-navbar #navbar_name').keyup(function() {
                     $('#view-navbar #navbar_logo').val(null);
                 });
+                
+                /* #DEBUT [AJAX ADD NAVBAR FOR HEADER] */
+                $('#btn-add-navbar-header').click(function(){
+                        
+                    var value = $('input[name="navbar-relation"]').val();
+
+                    $.ajax('/ajax/view/navbar/add/header/'+value, {
+                        type: 'GET',
+                            
+                    }).then(function(response){
+                        let html = response.html;
+                        $('#navbar').html(html);
+                      
+                                
+                    });
+                });
+                /* #FIN [AJAX ADD NAVBAR FOR HEADER] */
+
                 loadEventUtils();
                 
-                
-                 
-                
-
-
             /* #FIN [EVENT FOR DYNAMIQUE RESPONSE] */
 
         });
@@ -87,7 +100,22 @@ function loadEventNavbar(){
      * #FIN [AJAX REQUEST FOR SELECT NAVBAR]
      *
      */
-    
+    /* #DEBUT [AJAX ADD NAVBAR FOR HEADER] */
+    $('#btn-add-navbar-header').click(function(){
+            
+        var value = $('input[name="navbar-relation"]').val();
+
+        $.ajax('/ajax/view/navbar/add/header/'+value, {
+            type: 'GET',
+                
+        }).then(function(response){
+            let html = response.html;
+            $('#navbar').html(html);
+        
+                    
+        });
+    });
+    /* #FIN [AJAX ADD NAVBAR FOR HEADER] */
 
 }
 
@@ -103,61 +131,49 @@ function loadEventUtils(){
              loadEventUtils();
         });
      });
- /* #FIN [AJAX DELETE NAVBAR] */
+    /* #FIN [AJAX DELETE NAVBAR] */
 
- /* #DEBUT [AJAX UPDATE NAVBAR] */
- $('#update-navbar').click(function(){
-     var value = $('input[name="navbar-relation"]').val();
-     var name = $('#form-navbar #navbar_name').val();
-     $.ajax('/ajax/view/navbar/update/navbar', {
-         type: 'POST',
-         data: {'id': value,
-                 'name': name},
-     }).then(function(response){
-         $('#view-navbar').html(response.htmlNavbarView);
-         $('#form-navbar').html(response.html);
-         loadEventUtils();
-     });
- });
- /* #FIN [AJAX UPDATE NAVBAR] */
-
- /* #DEBUT [AJAX ADD ROUTE FOR NAVBAR] */
- $('#form-navbar form').submit(function(event){
-
-    event.preventDefault();
-    var value = $(this).serialize();
-            
-
-    $.ajax('/ajax/view/navbar/add/route', {
-        type: 'POST',
-        data: value,
-            
-    }).then(function(response){
-        $('#view-navbar').html(response.htmlNavbarView);
-        $('#form-navbar').html(response.html);
-        loadEventUtils();
-                
+    /* #DEBUT [AJAX UPDATE NAVBAR] */
+    $('#update-navbar').click(function(){
+        var value = $('input[name="navbar-relation"]').val();
+        var name = $('#form-navbar #navbar_name').val();
+        $.ajax('/ajax/view/navbar/update/navbar', {
+            type: 'POST',
+            data: {'id': value,
+                    'name': name},
+        }).then(function(response){
+            $('#view-navbar').html(response.htmlNavbarView);
+            $('#form-navbar').html(response.html);
+            loadEventUtils();
+        });
     });
-});
-/* #FIN [AJAX ADD ROUTE FOR NAVBAR] */
+    /* #FIN [AJAX UPDATE NAVBAR] */
 
-/* #DEBUT [AJAX ADD NAVBAR FOR HEADER] */
-$('#btn-add-navbar-header').click(function(){
-        
-    var value = $('input[name="navbar-relation"]').val();
+    /* #DEBUT [AJAX ADD ROUTE FOR NAVBAR] */
+    $('#form-navbar form').submit(function(event){
 
-    $.ajax('/ajax/view/navbar/add/header/'+value, {
-        type: 'GET',
-            
-    }).then(function(response){
-        let html = response.html;
-        $('#header').prepend(html);
-        loadEventUtils();
+        event.preventDefault();
+        var value = $(this).serialize();
                 
+
+        $.ajax('/ajax/view/navbar/add/route', {
+            type: 'POST',
+            data: value,
+                
+        }).then(function(response){
+            $('#view-navbar').html(response.htmlNavbarView);
+            $('#form-navbar').html(response.html);
+            loadEventUtils();
+                    
+        });
     });
-});
-/* #FIN [AJAX ADD NAVBAR FOR HEADER] */
-loadEventNavbar();
+    /* #FIN [AJAX ADD ROUTE FOR NAVBAR] */
+
+    loadEventNavbar();
 }
+
+
+
+
 loadEventNavbar();
 loadEventUtils();

@@ -91,6 +91,32 @@
                 {% if maquette.selecting == true and maquette.header %}
 
                     <div id="header">
+                            {% if maquette.navbar %}
+                            <div id="navbar">
+                                <nav class="navbar navbar-light bg-light border m-0" id="navbar-{{maquette.navbar.id}}">
+                                    {% if maquette.navbar.name|split('.')|length == 1 %}
+                                        <span class="navbar-brand mb-0 h1">{{maquette.navbar.name}}</span>
+                                    {% else %}
+                                        <img class="img-fluid" width="64px" height="100%" src="{{ asset('img/uploads/' ~ maquette.navbar.name) }}">
+                                    {% endif %}
+                                                
+                                                
+                                    <div>
+                                        <ul class="navbar-nav mr-auto d-flex flex-row">
+                                            {% for route in routes %}
+
+                                                {% if route.navbar.id == maquette.navbar.id %}
+                                                    <li class="nav-item mx-2">
+                                                        <a class="nav-link" href="#">{{route.name}}</a>
+                                                    </li>
+                                                                
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            {% endif %}
                         <div style="background-image: url({{ asset('img/uploads/' ~ maquette.header.image) }});
                                     position: relative;
                                     height: 100vh;

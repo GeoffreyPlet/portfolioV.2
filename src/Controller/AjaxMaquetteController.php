@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Maquette;
 use App\Repository\MaquetteRepository;
+use App\Repository\RouteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +41,7 @@ class AjaxMaquetteController extends AbstractController
 
     //Route for select a maquette, and start buidling for view
     #[Route('/ajax/select/maquette', name: 'ajax_select_maquette')]
-    public function select(MaquetteRepository $repository, Request $request)
+    public function select(MaquetteRepository $repository, Request $request, RouteRepository $routeRepository)
     {
 
         //Find all maquette
@@ -53,6 +54,8 @@ class AjaxMaquetteController extends AbstractController
             if($oneMaquette->getId() == $request->get('id')){
                 $oneMaquette->setSelecting(true);
                 $checkHeader = $oneMaquette->getHeader();
+                $checkNavbar = $oneMaquette->getNavbar();
+                $routes = $routeRepository->findAll();
                 $this->getDoctrine()->getManager()->flush();
             }
             else{
@@ -67,7 +70,8 @@ class AjaxMaquetteController extends AbstractController
             'html' => $this->renderView('ajax/create-maquette.html.twig', ['maquettes' => $allMaquette,
                                                                             'display' => 'block']),
             'htmlView' => $this->renderView('component/header.html.twig', ['header' => $checkHeader]),
-        ]);
+            'htmlNavbar' => $this->renderView('component/navbar.html.twig', ['navbar' => $checkNavbar, 'routes' => $routes]),
+            ]);
 
     }
 

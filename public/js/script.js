@@ -68,6 +68,8 @@ function loadCreateMaquette(){
 
             $('#header').remove();
             $('#view').append(response.htmlView);
+            $('#header').prepend('<div id="navbar"></div>');
+            $('#navbar').html(response.htmlNavbar); 
             loadCreateMaquette();
         });
     });
@@ -449,11 +451,17 @@ function loadHeaderViewEvent(){
 function loadUploadSiteEvent(){
     $('#upload-site-btn').click(function(){
 
-        let image = $($('#header').children()[1]).attr('class');
+        let image = $($('#header').children()[2]).attr('class');
 
+        /* #DEBUT HEAD */
+            $('#header').prepend('<head> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"> </head>');
+            $('#header').append('<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>');
+        /* #FIN HEAD */
         let html = $('#header').html();
+
+        
         html = html.replace('url(/img/uploads/'+image+')','url(img/uploads/'+image+')');
-       
+      
 
         /**
          * JE doit faire une requete ajax en post avec les différent composant donc ici
