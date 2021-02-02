@@ -9,6 +9,7 @@ use App\Entity\Navbar;
 use App\Form\FooterType;
 use App\Form\HeaderType;
 use App\Form\NavbarType;
+use App\Repository\FooterRepository;
 use App\Repository\NavbarRepository;
 use App\Repository\RouteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,10 +31,11 @@ class HomeController extends AbstractController
 
     //Route for create a Header entity
     #[Route('/create', name: 'home_create')]
-    public function create(Request $request, ValidatorInterface $validator, NavbarRepository $navbarRepository, RouteRepository $routeRepository): Response
+    public function create(Request $request, ValidatorInterface $validator, NavbarRepository $navbarRepository, RouteRepository $routeRepository, FooterRepository $footerRepository): Response
     {
         $allRoute = $routeRepository->findAll();
         $allNavbar = $navbarRepository->findAll();
+        $allFooter = $footerRepository->findAll();
 
         /* #Start [FORM FOOTER] */
             $footer = new Footer();
@@ -168,6 +170,7 @@ class HomeController extends AbstractController
             'maquettes' => $allMaquette,
             'navbars' => $allNavbar,
             'routes' => $allRoute,
+            'footers' => $allFooter,
             'navbarForm' => $formNavbare->createView(),
             'footerForm' => $formFooter->createView(),
             'display' => null,
