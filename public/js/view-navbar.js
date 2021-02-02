@@ -13,6 +13,12 @@ function loadEventNavbar(){
         $(this).css({
             'background': '#fed778c7',
         });
+        $('#modal-create-footer').css({
+            'display': 'none',
+        });
+        $('#create-footer-btn').css({
+            'background-color': 'transparent',
+        });
         $('#create-header-btn').css({
             'background': 'none',
         });
