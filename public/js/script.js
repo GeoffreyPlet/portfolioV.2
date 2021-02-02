@@ -173,6 +173,12 @@ function loadToolsEvent(){
             $(this).css({
                 'background': '#fed778c7',
             });
+            $('#view-footer').css({
+                'display' : 'none',
+            });
+            $('#view-footer-btn').css({
+                'background-color': 'transparent',
+            });
             $('#create-maquette-btn').css({
                 'background': 'none',
             });
@@ -220,6 +226,12 @@ function loadToolsEvent(){
             $(this).css({
                 'background': '#fed778c7',
             });
+            $('#view-footer').css({
+                'display' : 'none',
+            });
+            $('#view-footer-btn').css({
+                'background-color': 'transparent',
+            });
             $('#modal-create-footer').css({
                 'display': 'none',
             });
@@ -266,6 +278,12 @@ function loadToolsEvent(){
             $(this).css({
                 'background': '#fed778c7',
             });
+            $('#view-footer').css({
+                'display' : 'none',
+            });
+            $('#view-footer-btn').css({
+                'background-color': 'transparent',
+            });
             $('#modal-create-footer').css({
                 'display': 'none',
             });
@@ -311,6 +329,12 @@ function loadToolsEvent(){
             //Style css for tools bar
             $(this).css({
                 'background': '#fed778c7',
+            });
+            $('#view-footer').css({
+                'display' : 'none',
+            });
+            $('#view-footer-btn').css({
+                'background-color': 'transparent',
             });
             $('#modal-create-footer').css({
                 'display': 'none',

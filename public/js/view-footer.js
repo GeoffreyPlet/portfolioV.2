@@ -1,27 +1,32 @@
-/* #DEBUT [CLOSE BTN] */
-$('#close-create-footer').click(function(){
-    $('#modal-create-footer').css({
-        'display': 'none',
-    });
-    $('#create-footer-btn').css({
-        'background-color': 'transparent',
-    });
-    $('body').css({
-        'background': 'none',
-    });
-});
-$('#create-footer-btn').click(function(){
-    $('#modal-create-footer').css({
-        'display': 'block',
-    });
-    $('#create-footer-btn').css({
-        'background-color': '#d2b56c',
-    });
+
+
+/* #START [CLOSE BTN] */
+$('#close-view-footer').click(function(){
     $('#view-footer').css({
         'display' : 'none',
     });
     $('#view-footer-btn').css({
         'background-color': 'transparent',
+    });
+    $('body').css({
+        'background': 'none',
+    });
+})
+/* #END [CLOSE BTN] */
+
+/* #START [SHOW BTN] */
+$('#view-footer-btn').click(function(){
+    $('#view-footer').css({
+        'display' : 'block',
+    });
+    $('#view-footer-btn').css({
+        'background': '#d2b56c',
+    });
+    $('#modal-create-footer').css({
+        'display': 'none',
+    });
+    $('#create-footer-btn').css({
+        'background': 'none',
     });
     $('#view-navbar').css({
         'display' : 'none',
@@ -60,4 +65,4 @@ $('#create-footer-btn').click(function(){
         'background': '#788080',
     });
 });
-/* #FIN [CLOSE BTN] */
+/* #END [SHOW BTN] */

@@ -16,6 +16,12 @@ function loadEventNavbar(){
         $('#modal-create-footer').css({
             'display': 'none',
         });
+        $('#view-footer').css({
+            'display' : 'none',
+        });
+        $('#view-footer-btn').css({
+            'background-color': 'transparent',
+        });
         $('#create-footer-btn').css({
             'background-color': 'transparent',
         });
