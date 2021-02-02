@@ -1,3 +1,4 @@
+{% if navbar %}
 <nav class="navbar navbar-light bg-light border m-0" id="navbar-{{navbar.id}}">
     {% if navbar.name|split('.')|length == 1 %}
         <span class="navbar-brand mb-0 h1">{{navbar.name}}</span>
@@ -20,3 +21,4 @@
         </ul>
     </div>
 </nav>
+{% endif %}

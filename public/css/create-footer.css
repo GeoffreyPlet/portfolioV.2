@@ -1,6 +1,6 @@
 #modal-create-footer{
     background-color: #fff;
- 
+    display: none;
     position: fixed;
     top: 25%;
     left: 25%;

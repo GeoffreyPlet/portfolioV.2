@@ -2,4 +2,14 @@
     <div id="close-create-footer" class="text-right">
         <span>x</span>
     </div>
+    <div class="text-center">
+        <h3 class="m-0">Creation du footer</h3>
+        <span class="w-100 sous-titre">Crée votre fotter afin de l'ajouter dans les views</span>
+    </div>
+    <div class="p-4">
+        {{form_start(footerForm)}}
+            {{form_widget(footerForm)}}
+            <button formnovalidate>Ajouter</button>
+        {{form_end(footerForm)}}
+    </div>
 </div>

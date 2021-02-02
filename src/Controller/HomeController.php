@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Footer;
 use App\Entity\Header;
 use App\Entity\Maquette;
 use App\Entity\Navbar;
+use App\Form\FooterType;
 use App\Form\HeaderType;
 use App\Form\NavbarType;
 use App\Repository\NavbarRepository;
@@ -32,6 +34,21 @@ class HomeController extends AbstractController
     {
         $allRoute = $routeRepository->findAll();
         $allNavbar = $navbarRepository->findAll();
+
+        /* #Start [FORM FOOTER] */
+            $footer = new Footer();
+            $formFooter = $this->createForm(FooterType::class, $footer);
+            $formFooter->handleRequest($request);
+
+            if($formFooter->isSubmitted() && $formFooter->isValid() && empty($errorsNavbar))
+            {
+                $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($footer);
+                    $entityManager->flush();
+    
+                    return $this->redirectToRoute('home_create');
+            }
+        /* #END [FORM FOOTER] */
 
         /* #START [FORM NAVBAR] */
             $navbar = new Navbar();
@@ -152,6 +169,7 @@ class HomeController extends AbstractController
             'navbars' => $allNavbar,
             'routes' => $allRoute,
             'navbarForm' => $formNavbare->createView(),
+            'footerForm' => $formFooter->createView(),
             'display' => null,
             'errorsHeader' => $errorsHeader,
             'displayHeader' => $displayHeader,

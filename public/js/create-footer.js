@@ -6,6 +6,9 @@ $('#close-create-footer').click(function(){
     $('#create-footer-btn').css({
         'background-color': 'transparent',
     });
+    $('body').css({
+        'background': 'none',
+    });
 });
 $('#create-footer-btn').click(function(){
     $('#modal-create-footer').css({
