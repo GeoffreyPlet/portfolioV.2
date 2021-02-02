@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/header-view.css') }}">
     <link rel="stylesheet" href="{{ asset('css/create-navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/view-navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create-footer.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -25,13 +26,7 @@
         <div class="tools-bar">
                 <div class="tools-row pt-3">
 
-                    <!-- Essayer de faire une liste des élement
-                        Create tools
-                        View tools
-                        Action tools
-                        etc -->
-                    <div class="list">
-                    </div>
+                    
                     <div id="create-maquette-btn" class="d-flex my-1 py-1" style="color: #fff;
                                                                                   cursor: pointer;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-clipboard ml-2" viewBox="0 0 16 16">
@@ -40,40 +35,74 @@
                         </svg>
                         <p class="m-auto">Dashboard</p>
                     </div>
-                    <div id="create-header-btn" class="d-flex my-1 py-1" style="color: #fff;
+                    <div class="list">
+                        <ul class="p-0 m-2 sous-list-tool" id="list-create">
+                            <span id="btn-show-create-tool" class="d-flex py-1 justify-content-center" style="color: #fff; cursor: pointer;">Create tools</span>
+                            <li>
+                                <div id="create-header-btn" class="d-flex my-1 py-1" style="color: #fff;
+                                                                                    cursor: pointer;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-card-heading ml-2" viewBox="0 0 16 16">
+                                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                            <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
+                                        </svg>
+                                    <p class="m-auto">Create header</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="create-navbar-btn" class="d-flex my-1 py-1 " style="color: #fff;
                                                                                   cursor: pointer;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-card-heading ml-2" viewBox="0 0 16 16">
-                                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
-                            </svg>
-                        <p class="m-auto">Create header</p>
-                    </div>
-                    <div id="create-navbar-btn" class="d-flex my-1 py-1" style="color: #fff;
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-align-end ml-2" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M14.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z"/>
+                                        <path d="M13 7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z"/>
+                                    </svg>
+                                    <p class="m-auto">Create navbar</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="create-footer-btn" class="d-flex my-1 py-1" style="color: #fff;
+                                                                                    cursor: pointer;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" style="transform: rotate(180deg);" class="bi bi-window ml-2" viewBox="0 0 16 16">
+                                        <path d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                                        <path d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm13 2v2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zM2 14a1 1 0 0 1-1-1V6h14v7a1 1 0 0 1-1 1H2z"/>
+                                    </svg>
+                                    <p class="m-auto">Create footer</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="p-0 m-2 sous-list-tool" id="list-view">
+                            <span class="d-flex py-1 justify-content-center" style="color: #fff; cursor: pointer;" id="btn-show-view-tool">View tools</span>
+                            <li>
+                                <div id="view-header-btn" class="d-flex my-1 py-1" style="color: #fff;
                                                                                   cursor: pointer;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-align-end ml-2" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M14.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z"/>
-                            <path d="M13 7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z"/>
-                        </svg>
-                        <p class="m-auto">Create navbar</p>
-                    </div>
-                    <div id="view-header-btn" class="d-flex my-1 py-1" style="color: #fff;
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="ml-2 bi bi-view-list" viewBox="0 0 16 16">
+                                            <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+                                        </svg>
+                                    <p class="m-auto">View header</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="view-navbar-btn" class="d-flex my-1 py-1" style="color: #fff;
                                                                                   cursor: pointer;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="ml-2 bi bi-view-list" viewBox="0 0 16 16">
-                                <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
-                            </svg>
-                        <p class="m-auto">View header</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="ml-2 bi bi-menu-button-wide-fill" viewBox="0 0 16 16">
+                                        <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h13A1.5 1.5 0 0 0 16 3.5v-2A1.5 1.5 0 0 0 14.5 0h-13zm1 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zm9.927.427A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+                                    </svg>
+                                    <p class="m-auto">View navbar</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div id="view-navbar-btn" class="d-flex my-1 py-1" style="color: #fff;
-                                                                                  cursor: pointer;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="ml-2 bi bi-menu-button-wide-fill" viewBox="0 0 16 16">
-                            <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h13A1.5 1.5 0 0 0 16 3.5v-2A1.5 1.5 0 0 0 14.5 0h-13zm1 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zm9.927.427A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
-                        </svg>
-                        <p class="m-auto">View navbar</p>
-                    </div>
-                    <div class="w-100 d-flex position-absolute" style="bottom: 40px;">
+                    <div class="w-100 d-flex position-absolute flex-column" style="bottom: 40px;">
+                        <div style="color: #fff;">
+                            <div class="col-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+                                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <hr>
                         <div id="upload-site-btn" class="d-flex my-1 py-1 w-100" style="color: #fff;
                                                                                     cursor: pointer;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-upload ml-2" viewBox="0 0 16 16">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="100%" fill="currentColor" class="bi bi-upload ml-2" viewBox="0 0 16 16">
                                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                                 <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
                             </svg>
@@ -142,6 +171,7 @@
     {% include 'home/view/header.html.twig' %}
     {% include 'ajax/create-maquette.html.twig' %}
     {% include 'home/modal/create-navbar.html.twig' %}
+    {% include 'home/modal/create-footer.html.twig' %}
     {% include 'home/view/navbar.html.twig' %}
     </div>
     <!-- #END [background : back] -->

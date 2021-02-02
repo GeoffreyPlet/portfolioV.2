@@ -26,4 +26,11 @@
     padding: 1rem;
     cursor: pointer;
 }
+
+.sous-list-tool span:hover, .sous-list-tool li:hover{
+    background-color: #d2b56c !important;
+}
+.sous-list-tool li{
+    display: none;
+}
 /* #START CSS FOR TOOLS BAR */

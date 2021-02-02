@@ -104,8 +104,67 @@ function loadCreateMaquette(){
  * @show-view-header Event for show view tools
  * @show-create-maquette
  * @show-create-navbar
+ * @show-create-tools
+ * @show-view-tools
  */
 function loadToolsEvent(){
+
+        /**
+         * @show-create-tools
+         */
+        $('#btn-show-create-tool').click(function() {
+
+            for(let i = 0; i < $('#list-create li').length; i++){
+                $($('#list-create li')[i]).toggle();
+            }
+            if($('#list-create li')[0].style.display == 'list-item'){
+                $('#list-create').css({
+                    'border' : '1px solid #d2b56c',
+                    
+                });
+                $('#btn-show-create-tool').css({
+                    'background-color' : '#d2b56c',
+                });
+            }
+            else{
+                $('#list-create').css({
+                    'border' : '1px solid transparent',
+                    
+                });
+                $('#btn-show-create-tool').css({
+                    'background-color' : 'transparent',
+                });
+            }
+        });
+
+        /**
+         * @show-view-tools
+         */
+        $('#btn-show-view-tool').click(function() {
+
+            for(let i = 0; i < $('#list-view li').length; i++){
+                $($('#list-view li')[i]).toggle();
+            }
+            if($('#list-view li')[0].style.display == 'list-item'){
+                $('#list-view').css({
+                    'border' : '1px solid #d2b56c',
+                    
+                });
+                $('#btn-show-view-tool').css({
+                    'background-color' : '#d2b56c',
+                });
+            }
+            else{
+                $('#list-view').css({
+                    'border' : '1px solid transparent',
+                    
+                });
+                $('#btn-show-view-tool').css({
+                    'background-color' : 'transparent',
+                });
+            }
+        });
+
         /**
          * @show-creat-header
          */
